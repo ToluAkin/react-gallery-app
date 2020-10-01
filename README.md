@@ -1,6 +1,7 @@
 
 # Treehouse-FSJS-7
-React Gallery App
+React Gallery App <br />
+This react-app runs on a node version less than v13
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
