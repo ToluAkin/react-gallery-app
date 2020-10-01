@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PhotoContainer from './components/PhotoContainer';
 
-function App() {
-  return (
-    <div className="container">
-      <PhotoContainer />
-    </div>
-  );
+class App extends Component {
+  render() {
+    return (
+        <div className="container">
+          <PhotoContainer />
+        </div>
+    );
+  }
 }
 
 export default App;
