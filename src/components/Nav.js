@@ -1,21 +1,25 @@
 import React from "react";
-import { NavLink } from 'react-router-dom';
+import { BrowserRouter, Switch, Route, NavLink } from 'react-router-dom';
 
-const Nav = () => {
+const Nav = ({ match }) => {
     return (
-        <nav className="main-nav">
-            <ul>
-                <li>
-                    <NavLink to='/'>sunsets</NavLink>
-                </li>
-                <li>
-                    <NavLink to='#'>waterfalls</NavLink>
-                </li>
-                <li>
-                    <NavLink to='#'>rainbows</NavLink>
-                </li>
-            </ul>
-        </nav>
+        <BrowserRouter>
+            <Switch>
+                <nav className="main-nav">
+                    <ul>
+                        <li>
+                            <NavLink to='/'>sunsets</NavLink>
+                        </li>
+                        <li>
+                            <NavLink to='#'>waterfalls</NavLink>
+                        </li>
+                        <li>
+                            <NavLink to='#'>rainbows</NavLink>
+                        </li>
+                    </ul>
+                </nav>
+            </Switch>
+        </BrowserRouter>
     );
 }
 

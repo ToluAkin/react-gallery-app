@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import axios from 'axios';
 
 import apiKey from './Config';
@@ -20,7 +19,7 @@ class App extends Component {
         this.performSearch();
     }
 
-    performSearch = (query = 'sunsets,waterfalls,rainbows') => {
+    performSearch = (query = 'sunsets, waterfalls, rainbows') => {
         axios.get(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${query}&per_page=24&format=json&nojsoncallback=1`)
             .then(response => {
                 this.setState({
@@ -34,21 +33,16 @@ class App extends Component {
     }
 
     render() {
-        console.log(this.state.photos);
     return (
-        <BrowserRouter>
-            <div className="container">
-                <Switch>
-                    <SearchForm onSearch={this.performSearch} />
-                </Switch>
-                <Nav />
-                {
-                    (this.state.loading)
-                        ? <p>Loading pictures...</p>
-                        : <PhotoContainer data={ this.state.photos } />
-                }
-            </div>
-        </BrowserRouter>
+        <div className="container">
+            <SearchForm onSearch={this.performSearch} />
+            <Nav />
+            {
+                (this.state.loading)
+                    ? <p>Loading pictures...</p>
+                    : <PhotoContainer data={ this.state.photos } />
+            }
+        </div>
     );
   }
 
