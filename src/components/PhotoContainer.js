@@ -4,8 +4,9 @@ import NotFound from './NotFound';
 
 const PhotoContainer = (props) => {
     const photos = props.data;
+
     let pictures;
-    if (photos.length) {
+    if (photos.length > 0) {
         pictures = photos.map(
             picture => <Photo
                         farm={picture.farm}
@@ -21,9 +22,12 @@ const PhotoContainer = (props) => {
     }
     return (
         <div className="photo-container">
-            <h2>{}</h2>
+            <h2>{props.query}</h2>
             <ul>
-                { pictures }
+                { (props.loading)
+                    ? <p>Loading pictures ......</p>
+                    : pictures
+                }
             </ul>
         </div>
     );
