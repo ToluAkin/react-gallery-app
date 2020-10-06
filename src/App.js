@@ -22,12 +22,14 @@ class App extends Component {
     }
 
     componentDidMount() {
+        this.performSearch();
         this.performSearch('rainbows');
         this.performSearch('sunsets');
         this.performSearch('waterfalls');
     }
 
     performSearch = (query) => {
+        this.setState({ loading:true })
         axios.get(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${query}&per_page=24&format=json&nojsoncallback=1`)
             .then(response => {
                 if (query === 'sunsets' || query === 'waterfalls'|| query ==='rainbows') {
@@ -38,64 +40,60 @@ class App extends Component {
                 } else {
                     this.setState({
                         photos: response.data.photos.photo,
-                        query:[query],
+                        query,
                         loading: false
                     });
                 }
             })
             .catch(error => {
-                console.log('Error fetching and parsing data', error)
+                console.log('Error fetching and parsing data:', error)
             })
     }
 
     render() {
-    return (
-        <BrowserRouter>
-            <div className="container">
-                <SearchForm onSearch={ this.performSearch } query={this.state.query} />
-                <Nav />
-                {
-                    (this.state.loading)
-                        ? <p>Loading pictures...</p>
-                        : <Switch>
-                            <Route exact path='/' render={
-                                () => <Redirect to='/waterfalls' />
-                            }/>
-                            <Route exact path='/sunsets' render={
-                                () => <PhotoContainer
-                                    data={ this.state.sunsets }
-                                    loading={ this.state.loading }
-                                    query='sunsets'
-                                />
-                            }/>
-                            <Route exact path='/waterfalls' render={
-                                () => <PhotoContainer
-                                    data={ this.state.waterfalls }
-                                    loading={ this.state.loading }
-                                    query='waterfalls'
-                                />
-                            }/>
-                            <Route exact path='/rainbows' render={
-                                () => <PhotoContainer
-                                    data={ this.state.rainbows }
-                                    loading={ this.state.loading }
-                                    query='rainbows'
-                                />
-                            }/>
-                            <Route exact path='/search/:query' render={
-                                ({ match }) => <PhotoContainer
-                                    data={ this.state.photos || this.performSearch(match.params.query) }
-                                    loading={ this.state.loading }
-                                    query={ this.state.query }
-                                />
-                            }/>
-                            <Route component={ InvalidPage } />
-                        </Switch>
-                }
-            </div>
-        </BrowserRouter>
-    );
-  }
+        return (
+            <BrowserRouter>
+                <div className="container">
+                    <SearchForm onSearch={ this.performSearch } />
+                    <Nav />
+                    <Switch>
+                        <Route exact path='/' render={
+                            () => <Redirect to='/waterfalls' />
+                        }/>
+                        <Route exact path='/sunsets' render={
+                            () => <PhotoContainer
+                                data={ this.state.sunsets }
+                                loading={ this.state.loading }
+                                query='sunsets'
+                            />
+                        }/>
+                        <Route exact path='/waterfalls' render={
+                            () => <PhotoContainer
+                                data={ this.state.waterfalls }
+                                loading={ this.state.loading }
+                                query='waterfalls'
+                            />
+                        }/>
+                        <Route exact path='/rainbows' render={
+                            () => <PhotoContainer
+                                data={ this.state.rainbows }
+                                loading={ this.state.loading }
+                                query='rainbows'
+                            />
+                        }/>
+                        <Route exact path='/search/:query' render={
+                            () => <PhotoContainer
+                                data={ this.state.photos }
+                                loading={ this.state.loading }
+                                query={ this.state.query }
+                            />
+                        }/>
+                        <Route component={ InvalidPage } />
+                    </Switch>
+                </div>
+            </BrowserRouter>
+        );
+    }
 }
 
 export default App;
