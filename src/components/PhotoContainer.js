@@ -1,13 +1,22 @@
 import React from "react";
+//Component files
 import Photo from './Photo';
 import NotFound from './NotFound';
 
+/**
+ * @param props
+ * PhotoContainer renders the images
+ * */
 const PhotoContainer = props => {
-    const photos = props.data;
+    const photos = props.data; //images
     let pictures;
 
-    if (photos.length > 0) {
-        pictures = photos.map( picture =>
+    if (photos.length === 0 && props.loading === true) {
+        pictures = <li className="not-found">
+                        <p>Loading pictures ......</p>
+                   </li>
+    } else if (photos.length > 0) {
+        pictures = photos.map(picture => //mapping the images to the Photo component
             <Photo
                 farm={picture.farm}
                 id={picture.id}
@@ -16,11 +25,7 @@ const PhotoContainer = props => {
                 secret={picture.secret}
                 title={picture.title}
             />
-        )
-    } else if (photos.length === 0 && props.loading === true) {
-        pictures = <li className="not-found">
-            <p>Loading pictures ......</p>
-        </li>
+        );
     } else {
         pictures = <NotFound />
     }

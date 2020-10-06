@@ -1,6 +1,9 @@
 import React from "react";
 import { NavLink } from 'react-router-dom';
 
+/**
+ * Nav renders the navigation for the default routes available
+ * */
 const Nav = () => {
     return (
         <nav className="main-nav">

@@ -1,18 +1,21 @@
 import React, { Component } from "react";
 import { withRouter } from 'react-router-dom';
 
+/**
+ *  SearchForm renders the search action
+ * */
 class SearchForm extends Component {
     state = {
         searchText: ''
     }
-
+    //setting the state of the search value when the input field is typed in
     onSearchChange = e => {
         this.setState({ searchText: e.target.value });
     }
-
+    //search action for the search value and pushes search value to the browser's memory
     handleSubmit = e => {
         e.preventDefault();
-        this.props.onSearch(this.query.value);
+        this.props.onSearch(this.state.searchText);
         this.props.history.push(`/search/${this.query.value}`);
         e.currentTarget.reset();
     }

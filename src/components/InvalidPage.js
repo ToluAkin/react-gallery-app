@@ -1,6 +1,9 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
+/**
+ * InvalidPage renders a 404 page
+ * */
 const InvalidPage = () => {
     return(
         <ul>
