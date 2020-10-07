@@ -1,6 +1,6 @@
 body {
   text-align: center;
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Roboto', 'Rubik', sans-serif;
   color: #3f4850;
 }
 
@@ -45,9 +45,14 @@ input {
   outline: none;
 }
 
+.main-nav ul {
+  display: flex;
+  justify-content: center;
+}
+
 .main-nav li {
-  width: 100%;
-  margin-bottom: 1em;
+  margin: 10px 10px 1em 10px;
+  width: 100px;
 }
 
 .main-nav a {
@@ -111,15 +116,5 @@ input {
   .container {
     max-width: 960px;
     margin: auto;
-  }
-
-  .main-nav ul {
-    display: flex;
-    justify-content: center;
-  }
-  
-  .main-nav li {
-    margin: 10px;
-    width: 100px;
   }
 }

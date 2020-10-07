@@ -1,7 +1,31 @@
 
 # Treehouse-FSJS-7
-React Gallery App <br />
+#### React Gallery App: Project Overview
+The React gallery app is an image gallery app built in a modular fashion to display 24 images
+in a page using Axios to fetch data from the Flickr API. <br />
+The gallery app has a search component to display searched images, and the searched text is added to the route. <br />
+There are 3 default displayed topics that are already setup using React Router.
+
+
 This react-app runs on a node version less than v13
+- Install the latest version of node using  `nvm install --lts`
+- After installation, you can check the node version running with `node -v`
+- If the version running is still `v13`, use run the command `nvm use v12.18.4` or the version 
+installed from step 1
+- Furthermore,
+- You will need to create a `config.js` in the `src` directory of the project
+- In the `config.js` file, you need to add a flickr api key.
+- Use this format to add the api key in the `config.js` file.
+```
+ const apiKey = '';
+ export default apiKey;
+```
+- Now you should be able to run the project.
+
+#### Styles updated on the Project
+- updated the `font-family` of the `body element`
+- moved the style for `.main-nav ul` and updated the style for `.main-nav li` from the media query provided
+
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
