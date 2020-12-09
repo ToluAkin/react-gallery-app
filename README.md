@@ -1,5 +1,5 @@
 
-# Treehouse-FSJS-7
+# React Gallery App
 #### React Gallery App: Project Overview
 The React gallery app is an image gallery app built in a modular fashion to display 24 images
 in a page using Axios to fetch data from the Flickr API. <br />
