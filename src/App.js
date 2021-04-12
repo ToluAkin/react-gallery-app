@@ -53,7 +53,6 @@ class App extends Component {
     }
 
     render() {
-        console.log(this.state.loading);
         return (
             <BrowserRouter>
                 <div className="container">
