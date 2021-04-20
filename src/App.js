@@ -2,18 +2,18 @@ import React, { Component } from 'react';
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import axios from 'axios';
 // component files
-import apiKey from './config';
 import SearchForm from "./components/SearchForm";
 import Nav from "./components/Nav";
 import PhotoContainer from './components/PhotoContainer';
 import InvalidPage from "./components/InvalidPage";
+import apiKey from "./config";
 
 /**
  * App renders the whole app
  * */
 class App extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             photos: [],
             query: '',
