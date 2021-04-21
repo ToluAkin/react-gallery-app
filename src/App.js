@@ -6,7 +6,6 @@ import SearchForm from "./components/SearchForm";
 import Nav from "./components/Nav";
 import PhotoContainer from './components/PhotoContainer';
 import InvalidPage from "./components/InvalidPage";
-import apiKey from "./config";
 
 /**
  * App renders the whole app
@@ -30,7 +29,7 @@ class App extends Component {
         this.performSearch('waterfalls');
     }
     //implements the search action and the default search query on the navigation
-    performSearch = (query) => {
+    performSearch = (query, apiKey = process.env.REACT_APP_FLICKR_API_KEY) => {
         this.setState({ loading:true });
         axios.get(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${query}&per_page=24&format=json&nojsoncallback=1`)
             .then(response => {
