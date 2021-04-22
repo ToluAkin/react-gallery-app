@@ -26,4 +26,4 @@ yarn-error.log*
 
 .netlify
 .idea
-.env
+.env.development
