@@ -1,6 +1,6 @@
 import React from "react";
 //Component files
-// import Photo from './Photo';
+import Photo from './Photo';
 import NotFound from './NotFound';
 
 /**
@@ -17,20 +17,17 @@ const PhotoContainer = props => {
                    </li>
     } else if (photos.length > 0) {
         pictures = photos.map(picture => //mapping the images to the Photo component
-            // <Photo
-            //     farm={picture.farm}
-            //     id={picture.id}
-            //     key={picture.id}
-            //     server={picture.server}
-            //     secret={picture.secret}
-            //     title={picture.title}
-            // />
-
-            <li key={picture.id}>
-                <img src={`https://farm${picture.farm}.staticflickr.com/${picture.server}/${picture.id}_${picture.secret}.jpg`}  alt={ picture.title } />
-            </li>
+            {
+                return <Photo
+                        farm={picture.farm}
+                        id={picture.id}
+                        key={picture.id}
+                        server={picture.server}
+                        secret={picture.secret}
+                        title={picture.title}
+                    />
+            }
         );
-        console.log(pictures)
     } else {
         pictures = <NotFound />
     }
